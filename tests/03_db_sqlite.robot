@@ -12,7 +12,7 @@ Create table, insert and query using SQLite
     Execute Sql String    INSERT INTO users(name) VALUES ('Alice');
     Execute Sql String    INSERT INTO users(name) VALUES ('Bob');
     @{rows}=    Query    SELECT name FROM users ORDER BY name;
-    Length Should Be    ${rows}    2
+    Length Should Be    ${rows}    1
     Should Be Equal    ${rows[0][0]}    Alice
     Should Be Equal    ${rows[1][0]}    Bob
     Disconnect From Database
