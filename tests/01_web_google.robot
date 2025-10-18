@@ -1,13 +1,8 @@
 *** Settings ***
-Library    OperatingSystem
 Library    SeleniumLibrary
-Library    BuiltIn
-
-*** Keywords ***
-Screenshot If Failed
-    Run Keyword If    '${TEST STATUS}'=='FAIL'
-    ...    Capture Page Screenshot    ${OUTPUT DIR}${/}screenshots${/}${TEST NAME}-${TEST STATUS}-${START TIME}.png
-
+Resource   ../resources/common.resource
+Suite Setup       Set Screenshot Directory    ${OUTPUT DIR}${/}screenshots
+Test Teardown     Run Keywords    Screenshot If Failed    AND    Close Browser
 
 *** Test Cases ***
 Robot Framework homepage loads
