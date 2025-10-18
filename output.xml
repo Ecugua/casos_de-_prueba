@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.12.1 on win32)" generated="2025-10-18T15:47:23.809666" rpa="false" schemaversion="5">
+<suite id="s1" name="03 Db Sqlite" source="C:\Users\josep\Desktop\CasosPrueba\tests\03_db_sqlite.robot">
+<test id="s1-t1" name="Create table, insert and query using SQLite" line="8">
+<kw name="Connect To Database" owner="DatabaseLibrary">
+<msg time="2025-10-18T15:47:23.980522" level="INFO">Looking for configuration file: 'resources\db.cfg'</msg>
+<msg time="2025-10-18T15:47:23.980522" level="INFO">Configuration file doesn't exist</msg>
+<msg time="2025-10-18T15:47:23.990179" level="INFO">Connect to DB using : sqlite3.connect(database='sample.db')</msg>
+<arg>sqlite3</arg>
+<arg>${DBPATH}</arg>
+<doc>Creates a database connection using the DB API 2.0 ``db_module`` and the parameters provided.
+Along with listed commonly used arguments (`db_name`, `db_host` etc.)
+you can set any other DB module specific parameters as key/value pairs.</doc>
+<status status="PASS" start="2025-10-18T15:47:23.979535" elapsed="0.015666"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2025-10-18T15:47:23.996210" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, name TEXT);&lt;/code&gt;</msg>
+<msg time="2025-10-18T15:47:23.997180" level="INFO">Commit the transaction</msg>
+<arg>CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, name TEXT);</arg>
+<doc>Executes the ``sql_string`` as a single SQL command.</doc>
+<status status="PASS" start="2025-10-18T15:47:23.996210" elapsed="0.000970"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2025-10-18T15:47:23.999184" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;DELETE FROM users;&lt;/code&gt;</msg>
+<msg time="2025-10-18T15:47:24.021513" level="INFO">Commit the transaction</msg>
+<arg>DELETE FROM users;</arg>
+<doc>Executes the ``sql_string`` as a single SQL command.</doc>
+<status status="PASS" start="2025-10-18T15:47:23.998202" elapsed="0.031308"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2025-10-18T15:47:24.034516" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO users(name) VALUES ('Alice');&lt;/code&gt;</msg>
+<msg time="2025-10-18T15:47:24.037509" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO users(name) VALUES ('Alice');</arg>
+<doc>Executes the ``sql_string`` as a single SQL command.</doc>
+<status status="PASS" start="2025-10-18T15:47:24.033513" elapsed="0.014001"/>
+</kw>
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2025-10-18T15:47:24.050519" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO users(name) VALUES ('Bob');&lt;/code&gt;</msg>
+<msg time="2025-10-18T15:47:24.056497" level="INFO">Commit the transaction</msg>
+<arg>INSERT INTO users(name) VALUES ('Bob');</arg>
+<doc>Executes the ``sql_string`` as a single SQL command.</doc>
+<status status="PASS" start="2025-10-18T15:47:24.049506" elapsed="0.016992"/>
+</kw>
+<kw name="Query" owner="DatabaseLibrary">
+<msg time="2025-10-18T15:47:24.068514" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;SELECT name FROM users ORDER BY name;&lt;/code&gt;</msg>
+<msg time="2025-10-18T15:47:24.069521" level="INFO">Commit the transaction</msg>
+<msg time="2025-10-18T15:47:24.069521" level="INFO" html="true">&lt;div style="max-width: 100%; overflow-x: auto; max-height: 500px; overflow-y: auto;"&gt;&lt;table style="width: auto; border-collapse: collapse; border: 2px solid rgb(140 140 140)"&gt;&lt;caption style="text-align: left; font-weight: bold; padding: 5px;"&gt;Query returned 2 rows&lt;/caption&gt;&lt;tr&gt;&lt;th scope="col" style="position: sticky; top: 0; color:black; background-color: #d6ecd4; border: 1px solid rgb(160 160 160);padding: 8px 10px;text-align: center;"&gt;Row&lt;/th&gt;&lt;th scope="col" style="position: sticky; top: 0; background-color: #505050; color: #fff;border: 1px solid rgb(160 160 160);padding: 8px 10px;text-align: center;"&gt;name&lt;/th&gt;&lt;/tr&gt;&lt;tr style="background-color: var(--secondary-color, #eee)"&gt;&lt;th scope="row" style="color:black; background-color: #d6ecd4;border: 1px solid rgb(160 160 160);padding: 8px 10px;text-align: center;"&gt;0&lt;/th&gt;&lt;td style="border: 1px solid rgb(160 160 160);padding: 8px 10px;text-align: center;"&gt;Alice&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th scope="row" style="color:black; background-color: #d6ecd4;border: 1px solid rgb(160 160 160);padding: 8px 10px;text-align: center;"&gt;1&lt;/th&gt;&lt;td style="border: 1px solid rgb(160 160 160);padding: 8px 10px;text-align: center;"&gt;Bob&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</msg>
+<msg time="2025-10-18T15:47:24.070517" level="INFO">@{rows} = [ ('Alice',) | ('Bob',) ]</msg>
+<var>@{rows}</var>
+<arg>SELECT name FROM users ORDER BY name;</arg>
+<doc>Runs a query with the ``select_statement`` and returns the result as list of rows.
+The type of row values depends on the database module -
+usually they are tuples or tuple-like objects.</doc>
+<status status="PASS" start="2025-10-18T15:47:24.067496" elapsed="0.003021"/>
+</kw>
+<kw name="Length Should Be" owner="BuiltIn">
+<msg time="2025-10-18T15:47:24.072501" level="INFO">Length is 2.</msg>
+<msg time="2025-10-18T15:47:24.072501" level="FAIL">Length of '[('Alice',), ('Bob',)]' should be 1 but is 2.</msg>
+<arg>${rows}</arg>
+<arg>1</arg>
+<doc>Verifies that the length of the given item is correct.</doc>
+<status status="FAIL" start="2025-10-18T15:47:24.071510" elapsed="0.000991">Length of '[('Alice',), ('Bob',)]' should be 1 but is 2.</status>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${rows[0][0]}</arg>
+<arg>Alice</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2025-10-18T15:47:24.073500" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${rows[1][0]}</arg>
+<arg>Bob</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2025-10-18T15:47:24.074499" elapsed="0.000000"/>
+</kw>
+<kw name="Disconnect From Database" owner="DatabaseLibrary">
+<doc>Disconnects from the database.</doc>
+<status status="NOT RUN" start="2025-10-18T15:47:24.075505" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-10-18T15:47:23.977521" elapsed="0.097984">Length of '[('Alice',), ('Bob',)]' should be 1 but is 2.</status>
+</test>
+<status status="FAIL" start="2025-10-18T15:47:23.816666" elapsed="0.260842"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="03 Db Sqlite" id="s1" pass="0" fail="1" skip="0">03 Db Sqlite</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

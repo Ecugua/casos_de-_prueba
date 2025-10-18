@@ -23,7 +23,7 @@ List posts returns 200
 
 Create post returns 201
     Create Session    api    ${BASE}
-    ${body}=    Create Dictionary    title=hello    body=from_robot    userId=1
+    ${body}=    Create Dictionary    title=hello    body=from_yo    userId=10
     Log To Console    === Request JSON ===
     Pretty Print JSON    ${body}
 
