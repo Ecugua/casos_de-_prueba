@@ -58,16 +58,16 @@ pipeline {
   }
 
   post {
-    always {
-      // Apaga el mock aunque fallen tests
-      powershell '''
-      if (Test-Path mock.pid) {
-        $pid = Get-Content mock.pid
-        try { Stop-Process -Id $pid -Force } catch { }
-      }
-      '''
-      archiveArtifacts artifacts: 'results/**/*', fingerprint: true
-      robot outputPath: 'results', outputFileName: 'output.xml'
+  always {
+    powershell '''
+    if (Test-Path mock.pid) {
+      $mockPid = Get-Content mock.pid
+      try { Stop-Process -Id $mockPid -Force -ErrorAction SilentlyContinue } catch { }
     }
+    '''
+    archiveArtifacts artifacts: 'results/**/*', fingerprint: true
+    robot outputPath: 'results', outputFileName: 'output.xml'
   }
+}
+
 }
