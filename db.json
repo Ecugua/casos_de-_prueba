@@ -1,0 +1,52 @@
+{
+  "posts": [
+    {
+      "userId": 1,
+      "id": 1,
+      "title": "primer post",
+      "body": "hola mundo"
+    },
+    {
+      "userId": 1,
+      "id": 2,
+      "title": "segundo post",
+      "body": "contenido demo"
+    },
+    {
+      "userId": 2,
+      "id": 3,
+      "title": "tercer post",
+      "body": "otra cosa"
+    },
+    {
+      "userId": 2,
+      "id": 4,
+      "title": "cuarto post",
+      "body": "texto example"
+    },
+    {
+      "userId": 3,
+      "id": 5,
+      "title": "quinto post",
+      "body": "robot framework"
+    },
+    {
+      "title": "hello",
+      "body": "from_robot",
+      "userId": "1",
+      "id": 6
+    },
+    {
+      "title": "hello",
+      "body": "from_robot",
+      "userId": "1",
+      "id": 7
+    },
+    {
+      "title": "hello",
+      "body": "from_robot",
+      "userId": "1",
+      "id": 8
+    }
+  ]
+}

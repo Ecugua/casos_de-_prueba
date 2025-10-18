@@ -1,0 +1,15 @@
+# Robot Framework
+**/results/
+
+# Python / venv
+.venv/
+__pycache__/
+*.pyc
+
+# IDE
+.vscode/
+.idea/
+
+# SO
+.DS_Store
+Thumbs.db
