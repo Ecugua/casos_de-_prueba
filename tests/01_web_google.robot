@@ -1,7 +1,13 @@
 *** Settings ***
+Library    OperatingSystem
 Library    SeleniumLibrary
-Resource   ../resources/common.resource
-Test Teardown    Run Keywords    Screenshot If Failed    AND    Close Browser
+Library    BuiltIn
+
+*** Keywords ***
+Screenshot If Failed
+    Run Keyword If    '${TEST STATUS}'=='FAIL'
+    ...    Capture Page Screenshot    ${OUTPUT DIR}${/}screenshots${/}${TEST NAME}-${TEST STATUS}-${START TIME}.png
+
 
 *** Test Cases ***
 Robot Framework homepage loads
